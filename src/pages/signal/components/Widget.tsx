@@ -7,7 +7,7 @@ const Widget: React.FC = () => {
             <div className="w-full h-10 bg-amber-400" style={{ width: `${widgetSignal.value}%` }}></div>
         </div>
 
-        <span className="text-4xl text-white text-center">{widgetSignal.value}</span>
+        <span className="text-4xl text-center">{widgetSignal.value}</span>
     </div>
 }
 

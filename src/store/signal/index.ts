@@ -11,6 +11,7 @@ export const themeSignal = signal(localStorage.getItem("theme") || "dark");
 export const toggleThemeSignal = () => {
     themeSignal.value = themeSignal.value === "dark" ? "light" : "dark";
     localStorage.setItem("theme", themeSignal.value);
+    document.documentElement.setAttribute("data-theme", themeSignal.value);
 };
 
 

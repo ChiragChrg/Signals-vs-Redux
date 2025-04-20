@@ -10,7 +10,7 @@ const Widget: React.FC = () => {
             <div className="w-full h-10 bg-amber-400" style={{ width: `${value}%` }}></div>
         </div>
 
-        <span className="text-4xl text-white text-center">{value}</span>
+        <span className="text-4xl text-center">{value}</span>
     </div>
 }
 
