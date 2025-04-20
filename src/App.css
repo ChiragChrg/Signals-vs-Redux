@@ -6,10 +6,10 @@
   box-sizing: border-box;
 }
 
-.main_component {
+[data-theme="light"] .main_component {
   @apply bg-slate-200 text-black
 }
 
-[data-theme="dark"] .main_component {
+.main_component {
   @apply bg-slate-950 text-white
 }
