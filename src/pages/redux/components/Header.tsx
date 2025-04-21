@@ -6,6 +6,15 @@ import { mouseActions } from '../../../store/redux'
 import MousePosition from './MousePosition'
 import { Link } from 'react-router-dom'
 
+const ThemeAndLink = () => {
+    return (
+        <div className="flex items-center gap-2">
+            <ThemeToggle />
+            <Link to="/" className='bg-slate-700 w-[100px] h-12 flex justify-center items-center rounded'>Home</Link>
+        </div>
+    );
+};
+
 const Header: React.FC = () => {
     const dispatch = useDispatch()
 
@@ -27,10 +36,7 @@ const Header: React.FC = () => {
             <CounterDisplay />
             <MousePosition />
 
-            <div className="flex items-center gap-2">
-                <ThemeToggle />
-                <Link to="/" className='bg-slate-700 w-[100px] h-12 flex justify-center items-center rounded'>Home</Link>
-            </div>
+            <ThemeAndLink />
         </header>
     )
 }
