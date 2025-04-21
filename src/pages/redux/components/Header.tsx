@@ -4,6 +4,7 @@ import ThemeToggle from './ThemeButton'
 import { useDispatch } from 'react-redux'
 import { mouseActions } from '../../../store/redux'
 import MousePosition from './MousePosition'
+import { Link } from 'react-router-dom'
 
 const Header: React.FC = () => {
     const dispatch = useDispatch()
@@ -25,7 +26,11 @@ const Header: React.FC = () => {
 
             <CounterDisplay />
             <MousePosition />
-            <ThemeToggle />
+
+            <div className="flex items-center gap-2">
+                <ThemeToggle />
+                <Link to="/" className='bg-slate-700 w-[100px] h-12 flex justify-center items-center rounded'>Home</Link>
+            </div>
         </header>
     )
 }

@@ -3,6 +3,7 @@ import CounterDisplay from './CounterDisplay';
 import ThemeToggle from './ThemeButton';
 import { setMousePositionSignal } from '../../../store/signal';
 import MousePosition from './MousePosition';
+import { Link } from 'react-router-dom';
 
 const Header: React.FC = () => {
 
@@ -23,7 +24,11 @@ const Header: React.FC = () => {
 
             <CounterDisplay />
             <MousePosition />
-            <ThemeToggle />
+
+            <div className="flex items-center gap-2">
+                <ThemeToggle />
+                <Link to="/" className='bg-slate-700 w-[100px] h-12 flex justify-center items-center rounded'>Home</Link>
+            </div>
         </header>
     );
 };
