@@ -1,8 +1,8 @@
-import React, { useEffect } from 'react'
+// import React, { useEffect } from 'react'
 import CounterDisplay from './CounterDisplay';
 import ThemeToggle from './ThemeButton';
-import { setMousePositionSignal } from '../../../store/signal';
-import MousePosition from './MousePosition';
+// import { setMousePositionSignal } from '../../../store/signal';
+// import MousePosition from './MousePosition';
 import { Link } from 'react-router-dom';
 
 const ThemeAndLink = () => {
@@ -16,23 +16,23 @@ const ThemeAndLink = () => {
 
 const Header: React.FC = () => {
 
-    useEffect(() => {
-        const handleMouseMove = (event: MouseEvent) => {
-            setMousePositionSignal(event.clientX, event.clientY)
-        }
-        window.addEventListener('mousemove', handleMouseMove)
+    // useEffect(() => {
+    //     const handleMouseMove = (event: MouseEvent) => {
+    //         setMousePositionSignal(event.clientX, event.clientY)
+    //     }
+    //     window.addEventListener('mousemove', handleMouseMove)
 
-        return () => {
-            window.removeEventListener('mousemove', handleMouseMove)
-        }
-    })
+    //     return () => {
+    //         window.removeEventListener('mousemove', handleMouseMove)
+    //     }
+    // })
 
     return (
         <header className="w-full flex justify-between items-center">
             <h1 className='text-6xl font-black'>Signal</h1>
 
             <CounterDisplay />
-            <MousePosition />
+            {/* <MousePosition /> */}
 
             <ThemeAndLink />
         </header>

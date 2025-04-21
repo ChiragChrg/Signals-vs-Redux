@@ -12,7 +12,6 @@ const widgetSlice = createSlice({
 
             if (increasing) {
                 value = (parseFloat(value) + 0.5).toFixed(1);
-                console.log("Widget Redux", value);
                 if (parseFloat(value) >= 100.0) {
                     value = "100.0";
                     increasing = false;

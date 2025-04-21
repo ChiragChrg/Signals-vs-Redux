@@ -4,13 +4,15 @@ import { widgetActions } from '../../../store/redux'
 import _ from 'lodash';
 import Widget from './Widget'
 
+const INTERVAL_MS = 17;
+
 const WidgetContainer: React.FC = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
     const interval = setInterval(() => {
       dispatch(widgetActions.updateWidget());
-    }, 17);
+    }, INTERVAL_MS);
 
     return () => clearInterval(interval);
   }, [dispatch]);

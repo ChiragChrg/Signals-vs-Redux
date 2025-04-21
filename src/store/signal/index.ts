@@ -24,7 +24,6 @@ let increasing = true;
 export const updateWidget = () => {
     if (increasing) {
         widgetSignal.value = (parseFloat(widgetSignal.value) + 0.5).toFixed(1);
-        console.log("Widget Signal", widgetSignal.value);
         if (parseFloat(widgetSignal.value) >= 100.0) {
             widgetSignal.value = "100.0";
             increasing = false;

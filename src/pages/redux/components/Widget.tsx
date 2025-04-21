@@ -27,7 +27,7 @@ const Widget: React.FC = () => {
             ></div>
         </div>
 
-        <span ref={valueRef} className="w-[6ch] text-center">0</span>
+        <span ref={valueRef} className="w-[6ch] text-white text-center">0</span>
     </div>
 }
 

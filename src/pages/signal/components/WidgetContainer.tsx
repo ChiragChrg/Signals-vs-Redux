@@ -4,9 +4,11 @@ import { updateWidget } from '../../../store/signal'
 import { effect } from '@preact/signals-react';
 import _ from 'lodash';
 
+const INTERVAL_MS = 17;
+
 const WidgetContainer: React.FC = () => {
   effect(() => {
-    const interval = setInterval(updateWidget, 17);
+    const interval = setInterval(updateWidget, INTERVAL_MS);
     return () => clearInterval(interval);
   });
 
