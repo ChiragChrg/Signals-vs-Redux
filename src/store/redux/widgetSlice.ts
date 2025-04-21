@@ -1,14 +1,33 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { RootState } from "./store";
 
+let increasing = true;
+
 const widgetSlice = createSlice({
     name: "widget",
-    initialState: Math.floor(Math.random() * 100),
+    initialState: "00.0",
     reducers: {
-        updateWidget: () => {
-            return Math.floor(Math.random() * 100);
+        updateWidget: (state) => {
+            let value = state
+
+            if (increasing) {
+                value = (parseFloat(value) + 0.5).toFixed(1);
+                console.log("Widget Redux", value);
+                if (parseFloat(value) >= 100.0) {
+                    value = "100.0";
+                    increasing = false;
+                }
+            } else {
+                value = (parseFloat(value) - 0.5).toFixed(1);
+                if (parseFloat(value) <= 0) {
+                    value = "0.0";
+                    increasing = true;
+                }
+            }
+
+            return value;
         }
-    },
+    }
 });
 
 export const widgetActions = widgetSlice.actions;

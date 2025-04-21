@@ -18,8 +18,8 @@ const Widget: React.FC = () => {
         }
     }, [value])
 
-    return <div className="flex gap-4 w-full h-fit shadow shadow-red-600">
-        <div className="w-full bg-slate-600">
+    return <div className="flex gap-1 w-full h-fit bg-slate-700">
+        <div className="w-full bg-slate-500">
             <div
                 ref={barRef}
                 className="h-full bg-amber-400"
@@ -27,7 +27,7 @@ const Widget: React.FC = () => {
             ></div>
         </div>
 
-        <span ref={valueRef} className="text-center">0</span>
+        <span ref={valueRef} className="w-[6ch] text-center">0</span>
     </div>
 }
 

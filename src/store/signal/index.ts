@@ -17,13 +17,26 @@ export const toggleThemeSignal = () => {
 
 
 // Widget State
-const generateWidgets = () => Math.floor(Math.random() * 100);
+export const widgetSignal = signal("0.0");
 
-export const widgetSignal = signal(generateWidgets());
+let increasing = true;
 
 export const updateWidget = () => {
-    widgetSignal.value = generateWidgets();
-}
+    if (increasing) {
+        widgetSignal.value = (parseFloat(widgetSignal.value) + 0.5).toFixed(1);
+        console.log("Widget Signal", widgetSignal.value);
+        if (parseFloat(widgetSignal.value) >= 100.0) {
+            widgetSignal.value = "100.0";
+            increasing = false;
+        }
+    } else {
+        widgetSignal.value = (parseFloat(widgetSignal.value) - 0.5).toFixed(1);
+        if (parseFloat(widgetSignal.value) <= 0) {
+            widgetSignal.value = "0.0";
+            increasing = true;
+        }
+    }
+};
 
 // Mouse Position State
 export const mousePositionSignal = signal({ x: 0, y: 0 });
