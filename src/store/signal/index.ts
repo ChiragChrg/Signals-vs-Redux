@@ -2,6 +2,7 @@ import { signal } from "@preact/signals-react";
 
 // Counter State
 export const counterSignal = signal(0);
+
 export const incrementSignal = () => counterSignal.value++;
 export const decrementSignal = () => counterSignal.value--;
 
@@ -16,12 +17,12 @@ export const toggleThemeSignal = () => {
 
 
 // Widget State
-const generateValue = () => Math.floor(Math.random() * 100);
+const generateWidgets = () => Math.floor(Math.random() * 100);
 
-export const widgetSignal = signal(generateValue());
+export const widgetSignal = signal(generateWidgets());
 
 export const updateWidget = () => {
-    widgetSignal.value = generateValue();
+    widgetSignal.value = generateWidgets();
 }
 
 // Mouse Position State

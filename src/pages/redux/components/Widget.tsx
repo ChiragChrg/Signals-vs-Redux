@@ -1,16 +1,33 @@
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
 import { useSelector } from 'react-redux';
 import { SEL_Widget } from '../../../store/redux';
 
 const Widget: React.FC = () => {
-    const value = useSelector(SEL_Widget);
+    const barRef = useRef<HTMLDivElement>(null)
+    const valueRef = useRef<HTMLSpanElement>(null)
 
-    return <div className="flex flex-col gap-4 w-full h-fit shadow shadow-red-600">
+    const value = useSelector(SEL_Widget); // This will cause re-render
+    console.log("Render Widget")
+
+    useEffect(() => {
+        if (barRef.current) {
+            barRef.current.style.width = `${value}%`
+        }
+        if (valueRef.current) {
+            valueRef.current.textContent = `${value}%`
+        }
+    }, [value])
+
+    return <div className="flex gap-4 w-full h-fit shadow shadow-red-600">
         <div className="w-full bg-slate-600">
-            <div className="w-full h-10 bg-amber-400" style={{ width: `${value}%` }}></div>
+            <div
+                ref={barRef}
+                className="h-full bg-amber-400"
+                style={{ width: `$0%` }}
+            ></div>
         </div>
 
-        <span className="text-4xl text-center">{value}</span>
+        <span ref={valueRef} className="text-center">0</span>
     </div>
 }
 

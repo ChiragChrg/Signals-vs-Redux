@@ -1,24 +1,17 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 import { RootState } from "./store";
-
-const initialState = {
-    value: 0,
-}
 
 const widgetSlice = createSlice({
     name: "widget",
-    initialState,
+    initialState: Math.floor(Math.random() * 100),
     reducers: {
-        setValue: (state, action: PayloadAction<number>) => {
-            state.value = action.payload;
-        },
-        clearValue: (state) => {
-            state.value = 0;
+        updateWidget: () => {
+            return Math.floor(Math.random() * 100);
         }
     },
 });
 
 export const widgetActions = widgetSlice.actions;
-export const SEL_Widget = (state: RootState) => state.widget.value;
+export const SEL_Widget = (state: RootState) => state.widget;
 
 export const widgetReducer = widgetSlice.reducer;
