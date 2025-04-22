@@ -8,6 +8,10 @@
   will-change: transform;
 }
 
+html{
+  overflow-x: hidden;
+}
+
 [data-theme="light"] body {
   @apply bg-slate-200 text-black
 }
