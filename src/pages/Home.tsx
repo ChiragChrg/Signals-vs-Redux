@@ -14,9 +14,10 @@ const Home: React.FC = () => {
             <h1 className='text-6xl font-black'>Signals vs Redux</h1>
 
             <div className="flex justify-between items-center gap-8">
-                <Link to="/redux" className='bg-slate-700 w-[150px] h-12 flex justify-center items-center rounded text-2xl'>Redux</Link>
                 <Link to="/signal" className='bg-slate-700 w-[150px] h-12 flex justify-center items-center rounded text-2xl'>Signals</Link>
                 <Link to="/multi-signal" className='bg-slate-700 w-[150px] h-12 flex justify-center items-center rounded text-2xl'>Multi Signals</Link>
+                <Link to="/redux" className='bg-slate-700 w-[150px] h-12 flex justify-center items-center rounded text-2xl'>Redux</Link>
+                <Link to="/multi-redux" className='bg-slate-700 w-[150px] h-12 flex justify-center items-center rounded text-2xl'>Multi Redux</Link>
             </div>
 
             <p className="">Use <a className='text-blue-500 font-black' href="https://chromewebstore.google.com/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi">React Developer Tools</a> browser extension to check and visualize re-render counts.</p>

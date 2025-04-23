@@ -1,5 +1,5 @@
 import { Provider } from "react-redux";
-import store from "../store/redux/store";
+import { store } from "../store/redux/store";
 
 export default function ReduxProvider({
     children,

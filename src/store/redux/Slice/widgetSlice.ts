@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { RootState } from "./store";
+import { RootState } from "../store";
 
 let increasing = true;
 
@@ -8,6 +8,7 @@ const widgetSlice = createSlice({
     initialState: "00.0",
     reducers: {
         updateWidget: (state) => {
+            console.log("Updating widget state");
             let value = state
 
             if (increasing) {

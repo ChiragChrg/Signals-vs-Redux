@@ -1,19 +1,26 @@
-import { effect } from '@preact/signals-react';
-import React, { useRef } from 'react'
-import { WidgetsMap } from '../../store/signal/widgetSignal';
+import React, { useEffect, useRef } from 'react'
+import { useSelector } from 'react-redux';
+import { WidgetStateType } from '../../store/redux/Slice/multiWidgetSliceFactory';
+import { RootState } from '../../store/redux/store';
 
 type MultiWidgetsProps = {
     id: string;
 }
 
+type DynamicRootState = RootState & {
+    [key: string]: unknown; // minimal dynamic allowance
+};
+
 const MultiWidgets: React.FC<MultiWidgetsProps> = ({ id }) => {
-    const widget = WidgetsMap.value.get(id);
+    const widget = useSelector((state: DynamicRootState) => state[id] as WidgetStateType);
+
     const barRef = useRef<HTMLDivElement>(null);
     const valueRef = useRef<HTMLDivElement>(null);
-    console.log("Render Signal Mutil Widget")
 
-    effect(() => {
-        const value = widget?.metric.value || 0;
+    // console.log("Render Redux Mutil Widget", id, widget)
+
+    useEffect(() => {
+        const value = widget?.metric || 0;
 
         if (barRef.current) {
             barRef.current.style.width = `${value}%`;
@@ -21,12 +28,12 @@ const MultiWidgets: React.FC<MultiWidgetsProps> = ({ id }) => {
 
         if (valueRef.current) {
             valueRef.current.innerHTML = `
-                <span>🔄️${widget?.updateCount.value}</span>
-                <span>${widget?.isIncreasing.value ? "🟢" : "🔴"}</span>
-                <span class="w-[5ch] text-end font-bold">${widget?.metric.value}</span>
+                <span>🔄️${widget?.updateCount}</span>
+                <span>${widget?.isIncreasing ? "🟢" : "🔴"}</span>
+                <span class="w-[5ch] text-end font-bold">${widget?.metric}</span>
             `;
         }
-    })
+    }, [widget])
 
     return <div className="flex flex-col gap-1 w-full h-fit bg-slate-700">
         <div className="w-full h-8 bg-slate-500 relative">

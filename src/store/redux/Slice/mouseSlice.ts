@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { RootState } from "./store";
+import { RootState } from "../store";
 
 const initialState = {
     pos: { x: 0, y: 0 }

@@ -6,7 +6,7 @@ type WidgetType = {
     updateCount: Signal<number>;
 }
 
-// Signals for the widgets
+// Initialize the WidgetsMap and signals
 export const WidgetsMap = signal(new Map<string, WidgetType>());
 export const widgetCount = signal(100);
 export const intervalTime = signal(17);
@@ -52,10 +52,20 @@ let intervalId: number | null = null;
 effect(() => {
     if (intervalId) clearInterval(intervalId);
 
+    const keys = [...WidgetsMap.value.keys()];
+    if (keys.length === 0) return;
+
     intervalId = setInterval(() => {
         const keys = [...WidgetsMap.peek().keys()];
         for (const id of keys) updateWidget(id);
-    }, intervalTime.peek());
+    }, intervalTime.value);
+
+    return () => {
+        if (intervalId) {
+            clearInterval(intervalId);
+            intervalId = null;
+        }
+    };
 });
 
 // Cleanup function to clear the interval and reset the map
@@ -66,7 +76,3 @@ export const cleanupSignalWidgets = () => {
     }
     WidgetsMap.value.clear();
 };
-
-if (WidgetsMap.value.size === 0) {
-    createWidgets();
-}
