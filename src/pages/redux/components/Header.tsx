@@ -6,6 +6,10 @@ import ThemeToggle from './ThemeButton'
 // import MousePosition from './MousePosition'
 import { Link } from 'react-router-dom'
 
+type Props = {
+    title?: string;
+}
+
 const ThemeAndLink = () => {
     return (
         <div className="flex items-center gap-2">
@@ -15,7 +19,7 @@ const ThemeAndLink = () => {
     );
 };
 
-const Header: React.FC = () => {
+const Header: React.FC<Props> = ({ title = "Redux" }) => {
     // const dispatch = useDispatch()
 
     // useEffect(() => {
@@ -31,7 +35,7 @@ const Header: React.FC = () => {
 
     return (
         <header className="w-full flex justify-between items-center">
-            <h1 className='text-6xl font-black'>Redux</h1>
+            <h1 className='text-6xl font-black'>{title}</h1>
 
             <CounterDisplay />
             {/* <MousePosition /> */}
