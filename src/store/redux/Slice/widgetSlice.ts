@@ -8,7 +8,6 @@ const widgetSlice = createSlice({
     initialState: "00.0",
     reducers: {
         updateWidget: (state) => {
-            console.log("Updating widget state");
             let value = state
 
             if (increasing) {

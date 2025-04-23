@@ -13,11 +13,11 @@ type DynamicRootState = RootState & {
 
 const MultiWidgets: React.FC<MultiWidgetsProps> = ({ id }) => {
     const widget = useSelector((state: DynamicRootState) => state[id] as WidgetStateType);
-
     const barRef = useRef<HTMLDivElement>(null);
     const valueRef = useRef<HTMLDivElement>(null);
 
-    // console.log("Render Redux Mutil Widget", id, widget)
+    console.count("Render Redux Mutil Widget")
+
 
     useEffect(() => {
         const value = widget?.metric || 0;

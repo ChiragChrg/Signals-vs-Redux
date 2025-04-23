@@ -4,6 +4,7 @@ import { effect } from '@preact/signals-react';
 
 const Widget: React.FC = () => {
     const barRef = useRef<HTMLDivElement>(null);
+
     console.log("Render Signal Widget")
 
     effect(() => {

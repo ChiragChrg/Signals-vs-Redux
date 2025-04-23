@@ -6,7 +6,7 @@ import GithubIcon from '../assets/github.svg'
 const Home: React.FC = () => {
     return <div className="flex justify-center items-center h-screen bg-slate-950 text-white">
 
-        <a href='https://github.com/ChiragChrg/Signals-vs-Redux' target='_blank' className="absolute top-5 right-5">
+        <a href='https://github.com/ChiragChrg/Signals-vs-Redux' target='_blank' title='GitHub Repo' className="absolute top-5 right-5">
             <img src={GithubIcon} alt="Settings Screenshot" className='w-10' />
         </a>
 
@@ -21,8 +21,8 @@ const Home: React.FC = () => {
             </div>
 
             <div className="flex flex-col items-center">
-                <p className="">Use <a className='text-blue-500 font-black' href="https://chromewebstore.google.com/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi">React Developer Tools</a> browser extension to check and visualize re-render counts.</p>
-                <p className="">Use <a className='text-blue-500 font-black' href="https://chromewebstore.google.com/detail/fps-extension/gdkkmimldhefhmmmlalioafomdlahcog">FPS extension</a> to check browser Render performance.</p>
+                <p>Use <a className='text-blue-500 font-black' target='_blank' href="https://chromewebstore.google.com/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi">React Developer Tools</a> browser extension to check and visualize re-render counts.</p>
+                <p>Use <a className='text-blue-500 font-black' target='_blank' href="https://chromewebstore.google.com/detail/fps-extension/gdkkmimldhefhmmmlalioafomdlahcog">FPS extension</a> to check browser Render performance.</p>
             </div>
 
             <div className="max-w-[600px] flex flex-col items-center gap-4 border border-amber-400 !p-4 rounded-lg">

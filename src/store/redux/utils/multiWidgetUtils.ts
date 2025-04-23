@@ -29,7 +29,6 @@ export const createWidgets = (count: number) => {
 };
 
 export const updateWidgets = () => {
-    console.log('Updating widgets...');
     for (const [, actions] of widgetActionsMap.entries()) {
         store.dispatch(actions.update());
     }
