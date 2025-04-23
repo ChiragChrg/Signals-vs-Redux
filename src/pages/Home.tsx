@@ -20,7 +20,10 @@ const Home: React.FC = () => {
                 <Link to="/multi-redux" className='bg-slate-700 w-[150px] h-12 flex justify-center items-center rounded text-2xl'>Multi Redux</Link>
             </div>
 
-            <p className="">Use <a className='text-blue-500 font-black' href="https://chromewebstore.google.com/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi">React Developer Tools</a> browser extension to check and visualize re-render counts.</p>
+            <div className="flex flex-col items-center">
+                <p className="">Use <a className='text-blue-500 font-black' href="https://chromewebstore.google.com/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi">React Developer Tools</a> browser extension to check and visualize re-render counts.</p>
+                <p className="">Use <a className='text-blue-500 font-black' href="https://chromewebstore.google.com/detail/fps-extension/gdkkmimldhefhmmmlalioafomdlahcog">FPS extension</a> to check browser Render performance.</p>
+            </div>
 
             <div className="max-w-[600px] flex flex-col items-center gap-4 border border-amber-400 !p-4 rounded-lg">
                 <div className="flex flex-col gap-2 leading-7">
