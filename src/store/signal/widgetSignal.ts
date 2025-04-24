@@ -1,4 +1,5 @@
 import { effect, Signal, signal } from "@preact/signals-react";
+import { enableCombinedState } from "../combinedState";
 
 type WidgetType = {
     metric: Signal<string>;
@@ -50,7 +51,12 @@ export const updateWidget = (id: string) => {
 // Update all widgets at the specified interval
 let intervalId: number | null = null;
 effect(() => {
+    // If combined state is enabled, do not start the interval for multi signal widgets
+    if (enableCombinedState.peek()) return;
+
     if (intervalId) clearInterval(intervalId);
+
+    console.log("Starting interval for widgets...");
 
     const keys = [...WidgetsMap.value.keys()];
     if (keys.length === 0) return;

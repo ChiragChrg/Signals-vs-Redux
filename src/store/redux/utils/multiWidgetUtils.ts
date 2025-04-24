@@ -3,7 +3,7 @@ import { createWidgetSlice } from '../Slice/multiWidgetSliceFactory';
 import { rootReducer, store } from '../store';
 import { injectReducer } from './reduxUtils';
 
-const widgetActionsMap = new Map<string, ReturnType<typeof createWidgetSlice>['actions']>();
+export const widgetActionsMap = new Map<string, ReturnType<typeof createWidgetSlice>['actions']>();
 
 export const createWidgets = (count: number) => {
     // Reset the asyncReducers, slices, and actions

@@ -8,7 +8,7 @@ type MultiWidgetsProps = {
 }
 
 type DynamicRootState = RootState & {
-    [key: string]: unknown; // minimal dynamic allowance
+    [key: string]: unknown; // allow dynamic widget state
 };
 
 const MultiWidgets: React.FC<MultiWidgetsProps> = ({ id }) => {
@@ -17,7 +17,6 @@ const MultiWidgets: React.FC<MultiWidgetsProps> = ({ id }) => {
     const valueRef = useRef<HTMLDivElement>(null);
 
     console.count("Render Redux Mutil Widget")
-
 
     useEffect(() => {
         const value = widget?.metric || 0;

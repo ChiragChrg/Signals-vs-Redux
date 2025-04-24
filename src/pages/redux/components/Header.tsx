@@ -8,18 +8,20 @@ import { Link } from 'react-router-dom'
 
 type Props = {
     title?: string;
+    disableCounter?: boolean;
+    disableTheme?: boolean;
 }
 
-const ThemeAndLink = () => {
+const ThemeAndLink = ({ disabled }: { disabled: boolean }) => {
     return (
         <div className="flex items-center gap-2">
-            <ThemeToggle />
+            {!disabled && <ThemeToggle />}
             <Link to="/" className='bg-slate-700 w-[100px] h-12 flex justify-center items-center rounded'>Home</Link>
         </div>
     );
 };
 
-const Header: React.FC<Props> = ({ title = "Redux" }) => {
+const Header: React.FC<Props> = ({ title = "Redux", disableCounter = false, disableTheme = false }) => {
     // const dispatch = useDispatch()
 
     // useEffect(() => {
@@ -37,10 +39,10 @@ const Header: React.FC<Props> = ({ title = "Redux" }) => {
         <header className="w-full flex justify-between items-center">
             <h1 className='text-6xl font-black'>{title}</h1>
 
-            <CounterDisplay />
+            {!disableCounter && <CounterDisplay />}
             {/* <MousePosition /> */}
 
-            <ThemeAndLink />
+            <ThemeAndLink disabled={disableTheme} />
         </header>
     )
 }

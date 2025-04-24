@@ -5,6 +5,7 @@ import Redux from './pages/redux/Redux'
 import Signal from './pages/signal/Signal'
 import MultiSignal from './pages/muilt-signal/MultiSignal'
 import MultiRedux from './pages/multi-redux/MultiRedux'
+import SignalRedux from './pages/signal-redux/SignalRedux'
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path="/signal" element={<Signal />} />
         <Route path="/multi-signal" element={<MultiSignal />} />
         <Route path="/multi-redux" element={<MultiRedux />} />
+        <Route path="/signal-redux" element={<SignalRedux />} />
       </Routes>
     </BrowserRouter>
   )

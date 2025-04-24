@@ -13,11 +13,14 @@ const Home: React.FC = () => {
         <div className="w-full flex flex-col items-center gap-20">
             <h1 className='text-6xl font-black'>Signals vs Redux</h1>
 
-            <div className="flex justify-between items-center gap-8">
-                <Link to="/signal" className='bg-slate-700 w-[150px] h-12 flex justify-center items-center rounded text-2xl'>Signals</Link>
-                <Link to="/multi-signal" className='bg-slate-700 w-[150px] h-12 flex justify-center items-center rounded text-2xl'>Multi Signals</Link>
-                <Link to="/redux" className='bg-slate-700 w-[150px] h-12 flex justify-center items-center rounded text-2xl'>Redux</Link>
-                <Link to="/multi-redux" className='bg-slate-700 w-[150px] h-12 flex justify-center items-center rounded text-2xl'>Multi Redux</Link>
+            <div className="flex flex-col gap-4">
+                <div className="flex justify-between items-center gap-4">
+                    <Link to="/signal" className='bg-slate-700 w-[150px] h-12 flex justify-center items-center rounded text-2xl'>Signals</Link>
+                    <Link to="/multi-signal" className='bg-slate-700 w-[150px] h-12 flex justify-center items-center rounded text-2xl'>Multi Signals</Link>
+                    <Link to="/redux" className='bg-slate-700 w-[150px] h-12 flex justify-center items-center rounded text-2xl'>Redux</Link>
+                    <Link to="/multi-redux" className='bg-slate-700 w-[150px] h-12 flex justify-center items-center rounded text-2xl'>Multi Redux</Link>
+                </div>
+                <Link to="/signal-redux" className='bg-slate-700 w-full h-12 flex justify-center items-center rounded text-2xl'>Signal vs Redux using the same Data Source</Link>
             </div>
 
             <div className="flex flex-col items-center">
