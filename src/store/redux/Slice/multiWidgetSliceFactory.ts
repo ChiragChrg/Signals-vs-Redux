@@ -10,7 +10,7 @@ export const createWidgetSlice = (id: string) => {
     return createSlice({
         name: `widget/${id}`,
         initialState: {
-            metric: Math.random() * 100.0,
+            metric: parseFloat((Math.random() * 100.0).toFixed(1)),
             isIncreasing: true,
             updateCount: 0
         } as WidgetStateType,

@@ -20,7 +20,7 @@ export const createWidgets = () => {
 
     for (let i = 0; i < widgetCount.peek(); i++) {
         map.set(`ID-${i}`, {
-            metric: signal(Math.random() * 100.0 + ""),
+            metric: signal((Math.random() * 100.0).toFixed()),
             isIncreasing: signal(true),
             updateCount: signal(0),
             status: signal("complete")
