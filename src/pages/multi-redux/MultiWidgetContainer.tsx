@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import MultiWidgets from './MultiWidgets';
-import { cleanupReduxWidgets, createWidgets, startUpdatingWidgets } from '../../store/redux/utils/multiWidgetUtils';
+import { cleanupReduxWidgets, createWidgets } from '../../store/redux/utils/multiWidgetUtils';
 import { asyncReducerIds } from '../../store/redux/utils/reduxUtils';
 import { timeDiff } from '../../store/signal';
 
@@ -9,23 +9,21 @@ const MultiWidgetContainer: React.FC<{ children: React.ReactNode }> = ({ childre
     const [intervalTime, setIntervalTime] = useState<number>(17);
 
     useEffect(() => {
-        createWidgets(widgetCount);
-        startUpdatingWidgets(intervalTime);
+        createWidgets(widgetCount, intervalTime);
 
         return () => cleanupReduxWidgets();
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     const UpdateWidgetSettings = () => {
-        createWidgets(widgetCount);
-        startUpdatingWidgets(intervalTime);
+        createWidgets(widgetCount, intervalTime);
     }
 
     return <div className="border-t border-slate-400">
         <div className="w-full flex justify-between items-center !pb-2">
             <p><span className='font-bold text-blue-500'>{widgetCount}</span> widgets are reading <span className='font-bold text-blue-500'>{widgetCount}</span> Redux Slices which are updated every <span className='font-bold text-blue-500'> {intervalTime}ms </span> which causes re-renders when accessing the updated state using useSelector() hook
                 <br />
-                Time taken to render widgets 1000 times: <span className='font-bold text-blue-500'>{timeDiff}</span>
+                Time taken to render widgets 500 times: <span className='font-bold text-blue-500'>{timeDiff}</span>
             </p>
 
             <div className="flex gap-4 items-end">

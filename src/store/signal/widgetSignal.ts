@@ -1,4 +1,4 @@
-import { effect, Signal, signal } from "@preact/signals-react";
+import { Signal, signal } from "@preact/signals-react";
 import { enableCombinedState } from "../combinedState";
 import { startTimer } from ".";
 
@@ -29,6 +29,7 @@ export const createWidgets = () => {
 
     WidgetsMap.value = map;
     startTimer();
+    startUpdatingSignals();
 }
 
 // Update a specific widget's signal by ID
@@ -56,7 +57,7 @@ export const updateWidget = (id: string) => {
 
 // Update all widgets at the specified interval
 let intervalId: number | null = null;
-effect(() => {
+export const startUpdatingSignals = () => {
     // If combined state is enabled, do not start the interval for multi signal widgets
     if (enableCombinedState.peek()) return;
 
@@ -78,7 +79,7 @@ effect(() => {
             intervalId = null;
         }
     };
-});
+};
 
 // Cleanup function to clear the interval and reset the map
 export const cleanupSignalWidgets = () => {

@@ -23,7 +23,7 @@ const MultiWidgets: React.FC<MultiWidgetsProps> = ({ id }) => {
     useEffect(() => {
         const value = widget?.metric || 0;
 
-        if (widget?.updateCount >= 1000) {
+        if (widget?.updateCount >= 500) {
             cleanupReduxWidgets();
             endTimer();
         }

@@ -6,7 +6,7 @@ import { startTimer, timeStart } from '../../signal';
 
 export const widgetActionsMap = new Map<string, ReturnType<typeof createWidgetSlice>['actions']>();
 
-export const createWidgets = (count: number) => {
+export const createWidgets = (count: number, interval: number) => {
     // Reset the asyncReducers, slices, and actions
     store.asyncReducers = {};
     store.slices = {};
@@ -27,6 +27,8 @@ export const createWidgets = (count: number) => {
         injectReducer(id, slice);
         widgetActionsMap.set(id, slice.actions);
     }
+
+    startUpdatingSlices(interval);
 };
 
 export const updateWidgets = () => {
@@ -45,7 +47,7 @@ export const getWidget = (id: string) => {
 }
 
 let intervalId: number | null = null;
-export const startUpdatingWidgets = (interval: number) => {
+export const startUpdatingSlices = (interval: number) => {
     timeStart.value = 0;
     startTimer();
 
