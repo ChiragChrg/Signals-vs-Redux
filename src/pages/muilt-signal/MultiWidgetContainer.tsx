@@ -6,9 +6,7 @@ import { timeDiff } from '../../store/signal';
 
 const MultiWidgetContainer: React.FC<{ children: React.ReactNode }> = ({ children }) => {
     useEffect(() => {
-        if (WidgetsMap.value.size === 0) {
-            createWidgets();
-        }
+        createWidgets();
         return () => cleanupSignalWidgets()
     }, [])
 

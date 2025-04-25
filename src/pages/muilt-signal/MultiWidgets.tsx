@@ -19,7 +19,7 @@ const MultiWidgets: React.FC<MultiWidgetsProps> = ({ id }) => {
 
         if (!widget) return;
 
-        if (Number(widget?.updateCount) > 500) {
+        if (Number(widget?.updateCount) >= 500) {
             cleanupSignalWidgets();
             endTimer();
         }

@@ -16,6 +16,7 @@ export const intervalTime = signal(17);
 
 // Create a signal for each widget and store it in the map
 export const createWidgets = () => {
+    WidgetsMap.value.clear();
     const map = new Map<string, WidgetType>();
 
     for (let i = 0; i < widgetCount.peek(); i++) {
@@ -85,7 +86,5 @@ export const startUpdatingSignals = () => {
 export const cleanupSignalWidgets = () => {
     if (intervalId) {
         clearInterval(intervalId);
-        intervalId = null;
     }
-    WidgetsMap.value.clear();
 };
