@@ -1,15 +1,17 @@
 import { effect, Signal, signal } from "@preact/signals-react";
 import { enableCombinedState } from "../combinedState";
+import { startTimer } from ".";
 
 type WidgetType = {
     metric: Signal<string>;
     isIncreasing: Signal<boolean>;
     updateCount: Signal<number>;
+    status: Signal<"pending" | "complete">;
 }
 
 // Initialize the WidgetsMap and signals
 export const WidgetsMap = signal(new Map<string, WidgetType>());
-export const widgetCount = signal(100);
+export const widgetCount = signal(300);
 export const intervalTime = signal(17);
 
 // Create a signal for each widget and store it in the map
@@ -18,13 +20,15 @@ export const createWidgets = () => {
 
     for (let i = 0; i < widgetCount.peek(); i++) {
         map.set(`ID-${i}`, {
-            metric: signal('0.0'),
+            metric: signal(Math.random() * 100.0 + ""),
             isIncreasing: signal(true),
-            updateCount: signal(0)
+            updateCount: signal(0),
+            status: signal("complete")
         });
     }
 
     WidgetsMap.value = map;
+    startTimer();
 }
 
 // Update a specific widget's signal by ID
@@ -32,7 +36,9 @@ export const updateWidget = (id: string) => {
     const widget = WidgetsMap.value.get(id);
     if (!widget) return;
 
-    const { metric, isIncreasing, updateCount } = widget;
+    const { metric, isIncreasing, updateCount, status } = widget;
+    if (status.peek() === "pending") return; // Skip if already pending
+
     const currentValue = parseFloat(metric.peek()) || 0;
 
     if (isIncreasing.peek()) {

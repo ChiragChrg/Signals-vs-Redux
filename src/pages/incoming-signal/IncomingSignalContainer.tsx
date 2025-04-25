@@ -1,10 +1,14 @@
 import { computed } from '@preact/signals-react'
 import React, { useEffect } from 'react'
-import MultiWidgets from './MultiWidgets';
-import { cleanupSignalWidgets, createWidgets, intervalTime, widgetCount, WidgetsMap } from '../../store/signal/widgetSignal';
-import { timeDiff } from '../../store/signal';
+import { cleanupSignalWidgets, createWidgets, intervalTime, widgetCount, WidgetsMap } from '../../store/signal/widgetSignal'
+import IncomingSignalWidget from './IncomingSignalWidget'
+import MutateSignal from './MutateSignal'
 
-const MultiWidgetContainer: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+type IncomingSignalContainerProps = {
+    children?: React.ReactNode
+}
+
+const IncomingSignalContainer: React.FC<IncomingSignalContainerProps> = ({ children }) => {
     useEffect(() => {
         if (WidgetsMap.value.size === 0) {
             createWidgets();
@@ -14,11 +18,7 @@ const MultiWidgetContainer: React.FC<{ children: React.ReactNode }> = ({ childre
 
     return <div className="border-t border-slate-400">
         <div className="w-full flex justify-between items-center gap-10 !pb-2">
-            <p><span className='font-bold text-blue-500'>{widgetCount}</span> widgets are reading (<span className='font-bold text-blue-500'>{widgetCount}</span> x <span className='font-bold text-blue-500'>3</span> nested Signals) = <span className='font-bold text-blue-500'>{widgetCount.value * 3}</span> Signal states which are updated every
-                <span className='font-bold text-blue-500'> {intervalTime}ms </span> with Signals resulting in ZERO re-renders by directly painting the DOM
-                <br />
-                Time taken to render widgets 1000 times: <span className='font-bold text-blue-500'>{timeDiff}ms</span>
-            </p>
+            <MutateSignal />
 
             <div className="flex gap-4 items-end">
                 <label>
@@ -54,12 +54,12 @@ const MultiWidgetContainer: React.FC<{ children: React.ReactNode }> = ({ childre
     </div>
 }
 
-export default MultiWidgetContainer
+export default IncomingSignalContainer
 
 export const WidgetList: React.FC = () => {
     const widgetList = computed(() => Array.from(WidgetsMap.value.keys()));
 
     return <div className="w-full grid grid-cols-6 lg:grid-cols-10 gap-8 !p-4">
-        {widgetList.value.map((widget) => (<MultiWidgets key={widget} id={widget} />))}
+        {widgetList.value.map((widget) => (<IncomingSignalWidget key={widget} id={widget} />))}
     </div>
 }

@@ -1,28 +1,21 @@
-import { effect } from '@preact/signals-react';
 import React, { useRef } from 'react'
-import { cleanupSignalWidgets, WidgetsMap } from '../../store/signal/widgetSignal';
-import { endTimer } from '../../store/signal';
+import { WidgetsMap } from '../../store/signal/widgetSignal';
+import { effect } from '@preact/signals-react';
+import { selectedWidget } from '../../store/signal/incomingSignal';
 
-type MultiWidgetsProps = {
+type IncomingSignalWidgetProps = {
     id: string;
 }
 
-const MultiWidgets: React.FC<MultiWidgetsProps> = ({ id }) => {
+const IncomingSignalWidget: React.FC<IncomingSignalWidgetProps> = ({ id }) => {
     const widget = WidgetsMap.value.get(id);
     const barRef = useRef<HTMLDivElement>(null);
     const valueRef = useRef<HTMLDivElement>(null);
 
-    console.count("Render Signal Mutil Widget")
+    console.count("Render Incoming Signal Widget")
 
     effect(() => {
         const value = widget?.metric.value || 0;
-
-        if (!widget) return;
-
-        if (Number(widget?.updateCount) >= 1000) {
-            cleanupSignalWidgets();
-            endTimer();
-        }
 
         if (barRef.current) {
             barRef.current.style.width = `${value}%`;
@@ -37,7 +30,10 @@ const MultiWidgets: React.FC<MultiWidgetsProps> = ({ id }) => {
         }
     })
 
-    return <div className="flex flex-col gap-1 w-full h-fit bg-slate-700">
+    return <div
+        tabIndex={0}
+        onFocus={() => selectedWidget.value = id}
+        className="flex flex-col gap-1 w-full h-fit bg-slate-700 cursor-pointer">
         <div className="w-full h-8 bg-slate-500 relative">
             <div
                 ref={barRef}
@@ -53,4 +49,4 @@ const MultiWidgets: React.FC<MultiWidgetsProps> = ({ id }) => {
     </div>
 }
 
-export default MultiWidgets
+export default IncomingSignalWidget

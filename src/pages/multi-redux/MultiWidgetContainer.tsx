@@ -2,9 +2,10 @@ import React, { useEffect, useState } from 'react'
 import MultiWidgets from './MultiWidgets';
 import { cleanupReduxWidgets, createWidgets, startUpdatingWidgets } from '../../store/redux/utils/multiWidgetUtils';
 import { asyncReducerIds } from '../../store/redux/utils/reduxUtils';
+import { timeDiff } from '../../store/signal';
 
 const MultiWidgetContainer: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-    const [widgetCount, setWidgetCount] = useState<number>(100);
+    const [widgetCount, setWidgetCount] = useState<number>(300);
     const [intervalTime, setIntervalTime] = useState<number>(17);
 
     useEffect(() => {
@@ -22,8 +23,10 @@ const MultiWidgetContainer: React.FC<{ children: React.ReactNode }> = ({ childre
 
     return <div className="border-t border-slate-400">
         <div className="w-full flex justify-between items-center !pb-2">
-            <p><span className='font-bold text-blue-500'>{widgetCount}</span> widgets are reading <span className='font-bold text-blue-500'>{widgetCount}</span> Redux Slices which are updated every
-                <span className='font-bold text-blue-500'> {intervalTime}ms </span> which causes re-renders when accessing the updated state using useSelector() hook</p>
+            <p><span className='font-bold text-blue-500'>{widgetCount}</span> widgets are reading <span className='font-bold text-blue-500'>{widgetCount}</span> Redux Slices which are updated every <span className='font-bold text-blue-500'> {intervalTime}ms </span> which causes re-renders when accessing the updated state using useSelector() hook
+                <br />
+                Time taken to render widgets 1000 times: <span className='font-bold text-blue-500'>{timeDiff}ms</span>
+            </p>
 
             <div className="flex gap-4 items-end">
                 <label>

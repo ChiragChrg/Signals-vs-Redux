@@ -10,7 +10,7 @@ const Home: React.FC = () => {
             <img src={GithubIcon} alt="Settings Screenshot" className='w-10' />
         </a>
 
-        <div className="w-full flex flex-col items-center gap-20">
+        <div className="w-full flex flex-col items-center gap-10">
             <h1 className='text-6xl font-black'>Signals vs Redux</h1>
 
             <div className="flex flex-col gap-4">
@@ -21,6 +21,7 @@ const Home: React.FC = () => {
                     <Link to="/multi-redux" className='bg-slate-700 w-[150px] h-12 flex justify-center items-center rounded text-2xl'>Multi Redux</Link>
                 </div>
                 <Link to="/signal-redux" className='bg-slate-700 w-full h-12 flex justify-center items-center rounded text-2xl'>Signal vs Redux using the same Data Source</Link>
+                <Link to="/incoming-signal" className='bg-slate-700 w-full h-12 flex justify-center items-center rounded text-2xl'>Signal - Update incoming data</Link>
             </div>
 
             <div className="flex flex-col items-center">

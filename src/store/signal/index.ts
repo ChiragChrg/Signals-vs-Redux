@@ -1,4 +1,4 @@
-import { signal } from "@preact/signals-react";
+import { computed, signal } from "@preact/signals-react";
 
 // Counter State
 export const counterSignal = signal(0);
@@ -44,3 +44,17 @@ export const updateWidget = () => {
         }
     }
 };
+
+
+// Timer
+export const timeStart = signal(0);
+export const timeEnd = signal(0);
+
+export const startTimer = () => {
+    timeStart.value = Date.now();
+};
+export const endTimer = () => {
+    timeEnd.value = Date.now();
+}
+
+export const timeDiff = computed(() => (timeEnd.value - timeStart.value) <= 0 ? "..." : timeEnd.value - timeStart.value);

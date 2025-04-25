@@ -2,6 +2,8 @@ import React, { useEffect, useRef } from 'react'
 import { useSelector } from 'react-redux';
 import { WidgetStateType } from '../../store/redux/Slice/multiWidgetSliceFactory';
 import { RootState } from '../../store/redux/store';
+import { cleanupReduxWidgets } from '../../store/redux/utils/multiWidgetUtils';
+import { endTimer } from '../../store/signal';
 
 type MultiWidgetsProps = {
     id: string;
@@ -21,6 +23,11 @@ const MultiWidgets: React.FC<MultiWidgetsProps> = ({ id }) => {
     useEffect(() => {
         const value = widget?.metric || 0;
 
+        if (widget?.updateCount >= 1000) {
+            cleanupReduxWidgets();
+            endTimer();
+        }
+
         if (barRef.current) {
             barRef.current.style.width = `${value}%`;
         }
@@ -28,7 +35,7 @@ const MultiWidgets: React.FC<MultiWidgetsProps> = ({ id }) => {
         if (valueRef.current) {
             valueRef.current.innerHTML = `
                 <span>🔄️${widget?.updateCount}</span>
-                <span>${widget?.isIncreasing ? "🟢" : "🔴"}</span>
+                <span>${widget?.isIncreasing ? "🟢" : "🟠"}</span>
                 <span class="w-[5ch] text-end font-bold">${widget?.metric}</span>
             `;
         }

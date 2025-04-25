@@ -2,6 +2,7 @@ import { combineReducers } from '@reduxjs/toolkit';
 import { createWidgetSlice } from '../Slice/multiWidgetSliceFactory';
 import { rootReducer, store } from '../store';
 import { injectReducer } from './reduxUtils';
+import { startTimer, timeStart } from '../../signal';
 
 export const widgetActionsMap = new Map<string, ReturnType<typeof createWidgetSlice>['actions']>();
 
@@ -45,6 +46,9 @@ export const getWidget = (id: string) => {
 
 let intervalId: number | null = null;
 export const startUpdatingWidgets = (interval: number) => {
+    timeStart.value = 0;
+    startTimer();
+
     if (intervalId) clearInterval(intervalId);
     intervalId = setInterval(updateWidgets, interval);
 };
