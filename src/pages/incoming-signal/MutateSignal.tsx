@@ -22,7 +22,6 @@ const MutateSignal: React.FC = () => {
         const widget = WidgetsMap.peek().get(selectedId);
         if (!widget) return;
 
-        console.log(widget.status.value === "complete")
         if (isLocked.value && widget.status.value === "complete") {
             isLocked.value = false;
         }

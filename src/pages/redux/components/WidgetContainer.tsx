@@ -10,6 +10,7 @@ const WidgetContainer: React.FC = () => {
 
   useEffect(() => {
     const interval = setInterval(() => {
+      console.log("Single Redux Update Running")
       dispatch(widgetActions.updateWidget());
     }, intervalTime);
 

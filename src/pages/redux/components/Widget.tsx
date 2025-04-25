@@ -6,7 +6,7 @@ const Widget: React.FC = () => {
     const barRef = useRef<HTMLDivElement>(null);
     const value = useSelector(SEL_Widget); // This will cause re-render
 
-    console.count("Render Redux Widget")
+    console.log("Render Redux Widget")
 
     useEffect(() => {
         if (barRef.current) {

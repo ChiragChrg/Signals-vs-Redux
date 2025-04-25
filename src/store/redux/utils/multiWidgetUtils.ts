@@ -34,6 +34,8 @@ export const createWidgets = (count: number, interval?: number) => {
 };
 
 export const updateWidgets = () => {
+    console.log("Multi Redux Update Running")
+
     for (const [, actions] of widgetActionsMap.entries()) {
         store.dispatch(actions.update());
     }

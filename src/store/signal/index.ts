@@ -28,23 +28,19 @@ export const widgetSignal = signal("0.0");
 let increasing = true;
 
 export const updateWidget = () => {
+    console.log("Single Signal Update Running")
+
+    const currentValue = parseFloat(widgetSignal.peek()) || 0;
     if (increasing) {
-        widgetSignal.value = (parseFloat(widgetSignal.value) + 0.5).toFixed(1);
-
-        if (parseFloat(widgetSignal.value) >= 100.0) {
-            widgetSignal.value = "100.0";
-            increasing = false;
-        }
+        const next = currentValue + 0.5;
+        widgetSignal.value = next >= 100.0 ? "100.0" : next.toFixed(1);
+        increasing = next >= 100.0 ? false : true;
     } else {
-        widgetSignal.value = (parseFloat(widgetSignal.value) - 0.5).toFixed(1);
-
-        if (parseFloat(widgetSignal.value) <= 0) {
-            widgetSignal.value = "0.0";
-            increasing = true;
-        }
+        const next = currentValue - 0.5;
+        widgetSignal.value = next <= 0 ? "0.0" : next.toFixed(1);
+        increasing = next <= 0 ? true : false;
     }
 };
-
 
 // Timer
 export const timeStart = signal(0);

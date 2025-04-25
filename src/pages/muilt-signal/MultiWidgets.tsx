@@ -12,7 +12,7 @@ const MultiWidgets: React.FC<MultiWidgetsProps> = ({ id }) => {
     const barRef = useRef<HTMLDivElement>(null);
     const valueRef = useRef<HTMLDivElement>(null);
 
-    console.count("Render Signal Mutil Widget")
+    console.log("Render Signal Mutil Widget")
 
     effect(() => {
         const value = widget?.metric.value || 0;

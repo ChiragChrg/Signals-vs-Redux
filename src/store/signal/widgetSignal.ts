@@ -30,11 +30,13 @@ export const createWidgets = () => {
 
     WidgetsMap.value = map;
     startTimer();
-    startUpdatingSignals();
+    updateSingleSignal();
 }
 
 // Update a specific widget's signal by ID
 export const updateWidget = (id: string) => {
+    console.log("Multi Signals Update Running")
+
     const widget = WidgetsMap.value.get(id);
     if (!widget) return;
 
@@ -58,13 +60,11 @@ export const updateWidget = (id: string) => {
 
 // Update all widgets at the specified interval
 let intervalId: number | null = null;
-export const startUpdatingSignals = () => {
+export const updateSingleSignal = () => {
     // If combined state is enabled, do not start the interval for multi signal widgets
     if (enableCombinedState.peek()) return;
 
     if (intervalId) clearInterval(intervalId);
-
-    console.log("Starting interval for widgets...");
 
     const keys = [...WidgetsMap.value.keys()];
     if (keys.length === 0) return;

@@ -6,6 +6,8 @@ import { updateWidget, WidgetsMap } from "./signal/widgetSignal";
 export const enableCombinedState = signal<boolean>(false);
 
 export const updateSignalAndReduxWidget = () => {
+    console.log("Combined State Update Running")
+
     // Update Redux widgets
     for (const [, actions] of widgetActionsMap.entries()) {
         store.dispatch(actions.update());

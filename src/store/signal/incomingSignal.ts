@@ -7,6 +7,7 @@ export const selectedWidget = signal<string>("");
 // Update all incoming signals with new metric and isIncreasing values
 export const updateAllIncomingSignal = (newMetric: number, newIsIncreasing: boolean) => {
     const allSignals = [...WidgetsMap.peek().values()];
+    console.log("Incoming Signal All Update Running")
 
     for (const signal of allSignals) {
         const { metric, isIncreasing, updateCount, status } = signal;
@@ -29,19 +30,18 @@ export const updateAllIncomingSignal = (newMetric: number, newIsIncreasing: bool
 export const updateIncomingSignal = (id: string, newMetric: number) => {
     const signal = WidgetsMap.peek().get(id);
     if (!signal) return;
+    console.log("Incoming Signal Metric Update Running")
 
     const { metric, isIncreasing, updateCount, status } = signal;
     status.value = "pending";
 
-    setTimeout(() => {
-        if (isIncreasing.peek()) {
-            metric.value = newMetric >= 100.0 ? "100.0" : newMetric.toFixed(1);
-            isIncreasing.value = newMetric >= 100.0 ? false : true;
-        } else {
-            metric.value = newMetric <= 0 ? "0.0" : newMetric.toFixed(1);
-            isIncreasing.value = newMetric <= 0 ? true : false;
-        }
-    }, 500);
+    if (isIncreasing.peek()) {
+        metric.value = newMetric >= 100.0 ? "100.0" : newMetric.toFixed(1);
+        isIncreasing.value = newMetric >= 100.0 ? false : true;
+    } else {
+        metric.value = newMetric <= 0 ? "0.0" : newMetric.toFixed(1);
+        isIncreasing.value = newMetric <= 0 ? true : false;
+    }
 
     updateCount.value++;
     status.value = "complete";
@@ -51,13 +51,12 @@ export const updateIncomingSignal = (id: string, newMetric: number) => {
 export const updateIncomingIsIncreasing = (id: string, newIsIncreasing: boolean) => {
     const signal = WidgetsMap.peek().get(id);
     if (!signal) return;
+    console.log("Incoming Signal isIncreasing Update Running")
 
     const { isIncreasing, status } = signal;
     status.value = "pending";
 
-    setTimeout(() => {
-        isIncreasing.value = newIsIncreasing;
-    }, 500);
+    isIncreasing.value = newIsIncreasing;
 
     status.value = "complete";
 }

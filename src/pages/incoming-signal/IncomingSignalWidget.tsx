@@ -12,7 +12,7 @@ const IncomingSignalWidget: React.FC<IncomingSignalWidgetProps> = ({ id }) => {
     const barRef = useRef<HTMLDivElement>(null);
     const valueRef = useRef<HTMLDivElement>(null);
 
-    console.count("Render Incoming Signal Widget")
+    console.log("Render Incoming Signal Widget")
 
     effect(() => {
         const value = widget?.metric.value || 0;

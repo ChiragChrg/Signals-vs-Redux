@@ -18,7 +18,7 @@ const MultiWidgets: React.FC<MultiWidgetsProps> = ({ id }) => {
     const barRef = useRef<HTMLDivElement>(null);
     const valueRef = useRef<HTMLDivElement>(null);
 
-    console.count("Render Redux Mutil Widget")
+    console.log("Render Redux Mutil Widget")
 
     useEffect(() => {
         const value = widget?.metric || 0;
