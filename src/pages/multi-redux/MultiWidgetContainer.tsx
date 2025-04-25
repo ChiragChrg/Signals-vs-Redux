@@ -25,7 +25,7 @@ const MultiWidgetContainer: React.FC<{ children: React.ReactNode }> = ({ childre
         <div className="w-full flex justify-between items-center !pb-2">
             <p><span className='font-bold text-blue-500'>{widgetCount}</span> widgets are reading <span className='font-bold text-blue-500'>{widgetCount}</span> Redux Slices which are updated every <span className='font-bold text-blue-500'> {intervalTime}ms </span> which causes re-renders when accessing the updated state using useSelector() hook
                 <br />
-                Time taken to render widgets 1000 times: <span className='font-bold text-blue-500'>{timeDiff}ms</span>
+                Time taken to render widgets 1000 times: <span className='font-bold text-blue-500'>{timeDiff}</span>
             </p>
 
             <div className="flex gap-4 items-end">

@@ -57,4 +57,11 @@ export const endTimer = () => {
     timeEnd.value = Date.now();
 }
 
-export const timeDiff = computed(() => (timeEnd.value - timeStart.value) <= 0 ? "..." : timeEnd.value - timeStart.value);
+export const timeDiff = computed(() => {
+    const diff = timeEnd.value - timeStart.value;
+    if (diff <= 0) return "...";
+
+    if (diff > 1000) return `${(diff / 1000).toFixed(1)}s`;
+
+    return `${diff}ms`;
+});

@@ -17,7 +17,7 @@ const MultiWidgetContainer: React.FC<{ children: React.ReactNode }> = ({ childre
             <p><span className='font-bold text-blue-500'>{widgetCount}</span> widgets are reading (<span className='font-bold text-blue-500'>{widgetCount}</span> x <span className='font-bold text-blue-500'>3</span> nested Signals) = <span className='font-bold text-blue-500'>{widgetCount.value * 3}</span> Signal states which are updated every
                 <span className='font-bold text-blue-500'> {intervalTime}ms </span> with Signals resulting in ZERO re-renders by directly painting the DOM
                 <br />
-                Time taken to render widgets 1000 times: <span className='font-bold text-blue-500'>{timeDiff}ms</span>
+                Time taken to render widgets 1000 times: <span className='font-bold text-blue-500'>{timeDiff}</span>
             </p>
 
             <div className="flex gap-4 items-end">
