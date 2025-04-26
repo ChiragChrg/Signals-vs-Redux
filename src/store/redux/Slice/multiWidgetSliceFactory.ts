@@ -6,11 +6,11 @@ export type WidgetStateType = {
     updateCount: number;
 };
 
-export const createWidgetSlice = (id: string) => {
+export const createWidgetSlice = (id: string, metricValue?: string) => {
     return createSlice({
         name: `widget/${id}`,
         initialState: {
-            metric: (Math.random() * 100.0).toFixed(1),
+            metric: metricValue ?? (Math.random() * 100.0).toFixed(1),
             isIncreasing: true,
             updateCount: 0
         } as WidgetStateType,

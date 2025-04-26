@@ -3,14 +3,12 @@ import Header from '../redux/components/Header'
 import ReduxProvider from '../../providers/ReduxProvider'
 import SignalWidgetContainer from './SignalWidgetContainer'
 import ReduxWidgetContainer from './ReduxWidgetContainer'
-import { createWidgets as createSignalWidgets, intervalTime, widgetCount, WidgetsMap } from '../../store/signal/widgetSignal'
-import { createWidgets as createReduxWidgets } from '../../store/redux/utils/multiWidgetUtils'
-import { cleanupAllWidgets, enableCombinedState, startSynchronizedUpdates } from '../../store/combinedState'
+import { intervalTime, widgetCount, WidgetsMap } from '../../store/signal/widgetSignal'
+import { cleanupAllWidgets, createCombinedWidgets, enableCombinedState, startSynchronizedUpdates } from '../../store/combinedState'
 
 // Create widgets for both Signal and Redux
 const createAllWidgets = () => {
-    createSignalWidgets();
-    createReduxWidgets(widgetCount.value);
+    createCombinedWidgets();
 
     startSynchronizedUpdates(intervalTime.value);
 }

@@ -2,7 +2,7 @@ import { Signal, signal } from "@preact/signals-react";
 import { enableCombinedState } from "../combinedState";
 import { endTimer, startTimer } from ".";
 
-type WidgetType = {
+export type WidgetType = {
     metric: Signal<string>;
     isIncreasing: Signal<boolean>;
     updateCount: Signal<number>;

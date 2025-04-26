@@ -7,13 +7,14 @@ import { endTimer } from '../../store/signal';
 
 type MultiWidgetsProps = {
     id: string;
+    stopOnUpdateLimit?: boolean;
 }
 
 type DynamicRootState = RootState & {
     [key: string]: unknown; // allow dynamic widget state
 };
 
-const MultiWidgets: React.FC<MultiWidgetsProps> = ({ id }) => {
+const MultiWidgets: React.FC<MultiWidgetsProps> = ({ id, stopOnUpdateLimit = true }) => {
     const widget = useSelector((state: DynamicRootState) => state[id] as WidgetStateType);
     const barRef = useRef<HTMLDivElement>(null);
     const valueRef = useRef<HTMLDivElement>(null);
@@ -23,7 +24,7 @@ const MultiWidgets: React.FC<MultiWidgetsProps> = ({ id }) => {
     useEffect(() => {
         const value = widget?.metric || 0;
 
-        if (widget?.updateCount >= 500) {
+        if (stopOnUpdateLimit && widget?.updateCount >= 500) {
             cleanupReduxWidgets();
             endTimer();
         }
@@ -39,7 +40,7 @@ const MultiWidgets: React.FC<MultiWidgetsProps> = ({ id }) => {
                 <span class="w-[5ch] text-end font-bold">${widget?.metric}</span>
             `;
         }
-    }, [widget])
+    }, [widget, stopOnUpdateLimit])
 
     return <div className="flex flex-col gap-1 w-full h-fit bg-slate-700">
         <div className="w-full h-8 bg-slate-500 relative">
