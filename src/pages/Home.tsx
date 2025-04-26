@@ -15,10 +15,16 @@ const Home: React.FC = () => {
 
             <div className="flex flex-col gap-4">
                 <div className="flex justify-between items-center gap-4">
-                    <Link to="/signal" className='bg-slate-700 w-[150px] h-12 flex justify-center items-center rounded text-2xl'>Signals</Link>
-                    <Link to="/multi-signal" className='bg-slate-700 w-[150px] h-12 flex justify-center items-center rounded text-2xl'>Multi Signals</Link>
-                    <Link to="/redux" className='bg-slate-700 w-[150px] h-12 flex justify-center items-center rounded text-2xl'>Redux</Link>
-                    <Link to="/multi-redux" className='bg-slate-700 w-[150px] h-12 flex justify-center items-center rounded text-2xl'>Multi Redux</Link>
+                    <div className="border border-slate-700 rounded !p-1 flex items-center gap-2">
+                        <Link to="/redux" className='bg-slate-700 w-[150px] h-12 flex justify-center items-center rounded text-2xl'>Redux</Link>
+                        <span>vs</span>
+                        <Link to="/signal" className='bg-slate-700 w-[150px] h-12 flex justify-center items-center rounded text-2xl'>Signals</Link>
+                    </div>
+                    <div className="border border-slate-700 rounded !p-1 flex items-center gap-2">
+                        <Link to="/multi-redux" className='bg-slate-700 w-[150px] h-12 flex justify-center items-center rounded text-2xl'>Multi Redux</Link>
+                        <span>vs</span>
+                        <Link to="/multi-signal" className='bg-slate-700 w-[150px] h-12 flex justify-center items-center rounded text-2xl'>Multi Signals</Link>
+                    </div>
                 </div>
                 <Link to="/signal-redux" className='bg-slate-700 w-full h-12 flex justify-center items-center rounded text-2xl'>Signal vs Redux using the same Data Source</Link>
                 <Link to="/incoming-signal" className='bg-slate-700 w-full h-12 flex justify-center items-center rounded text-2xl'>Signal - Update incoming data</Link>

@@ -1,7 +1,6 @@
 import { effect } from '@preact/signals-react';
 import React, { useRef } from 'react'
-import { cleanupSignalWidgets, WidgetsMap } from '../../store/signal/widgetSignal';
-import { endTimer } from '../../store/signal';
+import { WidgetsMap } from '../../store/signal/widgetSignal';
 
 type MultiWidgetsProps = {
     id: string;
@@ -18,11 +17,6 @@ const MultiWidgets: React.FC<MultiWidgetsProps> = ({ id }) => {
         const value = widget?.metric.value || 0;
 
         if (!widget) return;
-
-        if (Number(widget?.updateCount) >= 500) {
-            cleanupSignalWidgets();
-            endTimer();
-        }
 
         if (barRef.current) {
             barRef.current.style.width = `${value}%`;

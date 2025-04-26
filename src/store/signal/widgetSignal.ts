@@ -1,6 +1,6 @@
 import { Signal, signal } from "@preact/signals-react";
 import { enableCombinedState } from "../combinedState";
-import { startTimer } from ".";
+import { endTimer, startTimer } from ".";
 
 type WidgetType = {
     metric: Signal<string>;
@@ -16,6 +16,8 @@ export const intervalTime = signal(17);
 
 // Create a signal for each widget and store it in the map
 export const createWidgets = () => {
+    cleanupSignalWidgets();
+
     WidgetsMap.value.clear();
     const map = new Map<string, WidgetType>();
 
@@ -37,7 +39,7 @@ export const createWidgets = () => {
 export const updateWidget = (id: string) => {
     console.log("Multi Signals Update Running")
 
-    const widget = WidgetsMap.value.get(id);
+    const widget = WidgetsMap.peek().get(id);
     if (!widget) return;
 
     const { metric, isIncreasing, updateCount, status } = widget;
@@ -56,6 +58,11 @@ export const updateWidget = (id: string) => {
     }
 
     updateCount.value++;
+
+    if (updateCount.peek() >= 500) {
+        cleanupSignalWidgets();
+        endTimer();
+    }
 }
 
 // Update all widgets at the specified interval
@@ -86,5 +93,6 @@ export const updateSingleSignal = () => {
 export const cleanupSignalWidgets = () => {
     if (intervalId) {
         clearInterval(intervalId);
+        intervalId = null;
     }
 };

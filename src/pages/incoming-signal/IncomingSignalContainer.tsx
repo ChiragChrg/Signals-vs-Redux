@@ -10,9 +10,8 @@ type IncomingSignalContainerProps = {
 
 const IncomingSignalContainer: React.FC<IncomingSignalContainerProps> = ({ children }) => {
     useEffect(() => {
-        if (WidgetsMap.value.size === 0) {
-            createWidgets();
-        }
+        createWidgets();
+
         return () => cleanupSignalWidgets()
     }, [])
 
