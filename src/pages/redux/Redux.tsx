@@ -7,7 +7,7 @@ const Redux: React.FC = () => {
     return (
         <ReduxProvider>
             <div className="w-full h-screen !p-10 flex flex-col gap-8">
-                <Header />
+                <Header disableCounter={true} />
                 <WidgetContainer />
             </div>
         </ReduxProvider>
