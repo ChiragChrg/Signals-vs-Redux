@@ -19,8 +19,10 @@ const WidgetContainer: React.FC = () => {
 
   return <div className="border-t border-slate-400">
     <div className="w-full flex justify-between items-center !pb-2">
-      <p><span className='font-bold text-blue-500'>{widgetCount}</span> widgets are reading <span className='font-bold text-blue-500'>1</span> Redux Slice which is updated every
-        <span className='font-bold text-blue-500'> {intervalTime}ms </span> with Redux which causes re-renders when accessing the updated state using useSelector() hook</p>
+      <p><span className='font-bold text-blue-500'>{widgetCount}</span> widgets reading <span className='font-bold text-blue-500'>1</span> Redux Slice updated every
+        <span className='font-bold text-blue-500'> {intervalTime}ms</span>.
+        <br />
+        Redux causes re-renders for all components using useSelector() when state updates, leading to performance degradation with increased widget count.</p>
 
       <div className="flex gap-4 items-end">
         <label>

@@ -26,8 +26,8 @@ const Home: React.FC = () => {
                         <Link to="/multi-signal" className='bg-slate-700 w-[150px] h-12 flex justify-center items-center rounded text-2xl'>Multi Signals</Link>
                     </div>
                 </div>
-                <Link to="/signal-redux" className='bg-slate-700 w-full h-12 flex justify-center items-center rounded text-2xl'>Signal vs Redux using the same Data Source</Link>
-                <Link to="/incoming-signal" className='bg-slate-700 w-full h-12 flex justify-center items-center rounded text-2xl'>Signal - Update incoming data</Link>
+                <Link to="/signal-redux" className='bg-slate-700 w-full h-12 flex justify-center items-center rounded text-2xl'>Signal vs Redux - Performance Impact Analysis</Link>
+                <Link to="/incoming-signal" className='bg-slate-700 w-full h-12 flex justify-center items-center rounded text-2xl'>Signal - Interactive Real-time Mutation</Link>
             </div>
 
             <div className="flex flex-col items-center">

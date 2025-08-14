@@ -15,8 +15,10 @@ const WidgetContainer: React.FC<{ children: React.ReactNode }> = ({ children }) 
 
   return <div className="border-t border-slate-400">
     <div className="w-full flex justify-between items-center !pb-2">
-      <p><span className='font-bold text-blue-500'>{widgetCount}</span> widgets are reading <span className='font-bold text-blue-500'>1</span> Signal state which is updated every
-        <span className='font-bold text-blue-500'> {intervalTime}ms </span> with Signals resulting in ZERO re-renders by directly painting the DOM</p>
+      <p><span className='font-bold text-blue-500'>{widgetCount}</span> widgets reading <span className='font-bold text-blue-500'>1</span> Signal state updated every
+        <span className='font-bold text-blue-500'> {intervalTime}ms</span>.
+        <br />
+        Signals achieve ZERO re-renders by directly updating the DOM, maintaining consistent performance regardless of widget count.</p>
 
       <div className="flex gap-4 items-end">
         <label>
