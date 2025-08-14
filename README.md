@@ -143,13 +143,13 @@ npm run lint      # Code linting
 4. Push and create Pull Request
 
 ## 📄 License
-MIT License - Open source and free to use.
+
+This project is licensed under the [MIT License](LICENSE).  
+You are free to use, modify, and share this project, as long as you include the original copyright.
+
+© 2025 [ChiragChrg](https://github.com/ChiragChrg) — All rights reserved under MIT.
 
 ## 🔗 Resources
 - **GitHub**: [ChiragChrg/Signals-vs-Redux](https://github.com/ChiragChrg/Signals-vs-Redux)
 - **Preact Signals**: [@preact/signals-react](https://www.npmjs.com/package/@preact/signals-react)
 - **Redux Toolkit**: [@reduxjs/toolkit](https://www.npmjs.com/package/@reduxjs/toolkit)
-
----
-
-> **💡 Pro Tip**: Enable React DevTools "Highlight updates when components render" to visualize the performance differences in real
