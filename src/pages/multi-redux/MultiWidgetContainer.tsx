@@ -21,7 +21,10 @@ const MultiWidgetContainer: React.FC<{ children: React.ReactNode }> = ({ childre
 
     return <div className="border-t border-slate-400">
         <div className="w-full flex justify-between items-center !pb-2">
-            <p><span className='font-bold text-blue-500'>{widgetCount}</span> widgets are reading <span className='font-bold text-blue-500'>{widgetCount}</span> Redux Slices which are updated every <span className='font-bold text-blue-500'> {intervalTime}ms </span> which causes re-renders when accessing the updated state using useSelector() hook
+            <p><span className='font-bold text-blue-500'>{widgetCount}</span> widgets with <span className='font-bold text-blue-500'>{widgetCount}</span> individual Redux Slices updated every <span className='font-bold text-blue-500'> {intervalTime}ms</span>.
+                <br />
+                Multiple Redux slices demonstrate severe performance degradation as each slice triggers re-renders across all connected components, creating exponential performance loss.
+                <br />
                 <br />
                 Time taken to render widgets 500 times: <span className='font-bold text-blue-500'>{timeDiff}</span>
             </p>

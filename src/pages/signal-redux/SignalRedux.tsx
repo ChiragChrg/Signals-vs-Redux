@@ -28,11 +28,14 @@ const SignalRedux: React.FC = () => {
     }, [])
 
     return <div className="w-full h-screen !p-10 flex flex-col gap-8">
-        <Header title='Signal vs Redux - Single Data Source' disableCounter disableTheme />
+        <Header title='Signal vs Redux - Performance Impact Analysis' disableCounter disableTheme />
 
         <div className="border-t border-slate-400 w-full flex justify-between items-center gap-10 !pb-2">
-            <p><span className='font-bold text-blue-500'>{widgetCount}</span> widgets are reading (<span className='font-bold text-blue-500'>{widgetCount}</span> x <span className='font-bold text-blue-500'>3</span> nested Signals) = <span className='font-bold text-blue-500'>{widgetCount.value * 3}</span> Signal states which are updated every
-                <span className='font-bold text-blue-500'> {intervalTime}ms </span> with Signals resulting in ZERO re-renders by directly painting the DOM</p>
+            <p><span className='font-bold text-blue-500'>{widgetCount}</span> Signal widgets + <span className='font-bold text-blue-500'>{widgetCount}</span> Redux widgets = <span className='font-bold text-blue-500'>{widgetCount.value * 2}</span> total widgets running simultaneously.
+                <br />
+                Both share the same data source, but Redux's re-render overhead creates a performance bottleneck that degrades the entire application,
+                <br />
+                making Signals appear slower than their true isolated performance.</p>
 
             <div className="flex gap-4 items-end">
                 <label>

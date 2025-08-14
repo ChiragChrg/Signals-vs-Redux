@@ -86,9 +86,9 @@ const MutateSignal: React.FC = () => {
 
     return (
         <div className="flex flex-col gap-2">
-            <div className="flex gap-4 items-end">
-                <p>Select a Widget to Mutate incoming signal value</p>
-                <p>
+            <div className="flex gap-4 items-center h-10 border-b border-slate-400">
+                <p>Select any widget to modify its Signal value in real-time</p>
+                <p className={selectedId ? 'block' : 'hidden'}>
                     Widget is :
                     <span className='text-xl font-black text-amber-400'> {selectedId}</span>
                     &nbsp; is <span ref={statusRef}></span>
