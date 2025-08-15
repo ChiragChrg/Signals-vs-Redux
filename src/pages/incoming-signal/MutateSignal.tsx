@@ -86,7 +86,7 @@ const MutateSignal: React.FC = () => {
 
     return (
         <div className="flex flex-col gap-2">
-            <div className="flex gap-4 items-center h-10 border-b border-slate-400">
+            <div className="flex gap-4 items-center h-10">
                 <p>Select any widget to modify its Signal value in real-time</p>
                 <p className={selectedId ? 'block' : 'hidden'}>
                     Widget is :
