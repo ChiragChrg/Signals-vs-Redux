@@ -1,8 +1,5 @@
-// import React, { useEffect } from 'react'
 import CounterDisplay from './CounterDisplay';
-import ThemeToggle from './ThemeButton';
-// import { setMousePositionSignal } from '../../../store/signal';
-// import MousePosition from './MousePosition';
+// import ThemeToggle from './ThemeButton';
 import { Link } from 'react-router-dom';
 
 type Props = {
@@ -14,7 +11,7 @@ type Props = {
 const ThemeAndLink = ({ disabled }: { disabled: boolean }) => {
     return (
         <div className="flex items-center gap-2">
-            {!disabled && <ThemeToggle />}
+            {!disabled && <></>}
             <Link to="/" className='bg-slate-700 w-[100px] h-12 flex justify-center items-center rounded'>Home</Link>
         </div>
     );
